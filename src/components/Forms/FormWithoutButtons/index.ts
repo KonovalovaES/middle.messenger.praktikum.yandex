@@ -5,7 +5,8 @@ import type IFormWithoutButtons from './types/types';
 
 import './style.scss';
 
-export default class FormWithoutButtons extends Block<IFormWithoutButtons.Props, IFormWithoutButtons.Refs> {
+export default class FormWithoutButtons extends
+  Block<IFormWithoutButtons.Props, IFormWithoutButtons.Refs> {
   constructor(props: IFormWithoutButtons.Props) {
     super({
       ...props,

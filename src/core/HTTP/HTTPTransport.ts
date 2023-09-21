@@ -17,35 +17,29 @@ export default class HTTPTransport {
     );
   };
 
-  put: RequestHandlerType = (url, options) => {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.PUT,
-      },
-    );
-  };
+  put: RequestHandlerType = (url, options) => this.request(
+    url,
+    {
+      ...options,
+      method: METHODS.PUT,
+    },
+  );
 
-  post: RequestHandlerType = (url, options) => {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.POST,
-      },
-    );
-  };
+  post: RequestHandlerType = (url, options) => this.request(
+    url,
+    {
+      ...options,
+      method: METHODS.POST,
+    },
+  );
 
-  delete: RequestHandlerType = (url, options) => {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.DELETE,
-      },
-    );
-  };
+  delete: RequestHandlerType = (url, options) => this.request(
+    url,
+    {
+      ...options,
+      method: METHODS.DELETE,
+    },
+  );
 
   request(url: string, options: Options, timeout = 5000) {
     const { method, data, headers } = options;
