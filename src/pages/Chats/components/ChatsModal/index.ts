@@ -7,11 +7,11 @@ import './style.scss';
 
 export default class ChatsModal extends Block<IChatsModal.Props, IChatsModal.Refs> {
   get newChatName() {
-    return this.refs.createChatModal?.values[0] || [];
+    return this.refs.createChatModal?.values;
   }
 
   get newUserName() {
-    return this.refs.addUserModal?.values[0] || [];
+    return this.refs.addUserModal?.values;
   }
 
   render() {

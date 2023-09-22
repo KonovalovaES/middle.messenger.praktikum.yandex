@@ -25,10 +25,6 @@ export default class Chats extends Block<IChats.Props, IChats.Refs> {
     }
   }
 
-  get isMessageValid() {
-    return !!(this.refs.chatSpace.message.trim());
-  }
-
   render() {
     return template;
   }

@@ -7,10 +7,10 @@ import './style.scss';
 
 export default class ProfileItem extends Block<IProfileItem.Props, IProfileItem.Refs> {
   constructor(props: IProfileItem.Props) {
-    super({
-      ...props,
-      onBlur: () => this._isValid,
-    });
+    super(props);
+
+    this.props.onBlur = () => this._isValid;
+    this.props.validate = this.props.validate || (() => true);
   }
   private get _value() {
     return (this.refs.input.element as HTMLInputElement).value;

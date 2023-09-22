@@ -1,8 +1,8 @@
-import FormInput from '../../Inputs/FormInput/FormInput';
+import type FormInput from '../../Inputs/FormInput/FormInput';
 import type IFormInput from '../../../Inputs/FormInput/types/types';
 
 namespace IForm {
-  interface Props {
+  type Props = {
     title: string;
     text?: string;
     fields?: IFormInput[];
@@ -11,9 +11,10 @@ namespace IForm {
     additionalButtonTitle: string;
     onMainButtonClick: (event: HTMLButtonElement) => void;
     onAdditionalButtonClick: (event: HTMLButtonElement) => void;
+    onSubmit?: () => void;
   }
 
-  type Refs = Record<string, FormInput>;
+  type Refs = Record<string, FormInput>
 }
 
 export default IForm;

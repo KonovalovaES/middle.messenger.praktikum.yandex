@@ -168,6 +168,7 @@ const pages: IPages = {
     Component: Profile,
     props: {
       user: userProfileInfo,
+      fields: editProfile,
     },
   },
   'edit-profile': {

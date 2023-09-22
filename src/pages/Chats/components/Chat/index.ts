@@ -7,12 +7,6 @@ import './style.scss';
 
 // language=hbs
 export default class Chat extends Block<IChat.Props, IChat.Refs> {
-  constructor(props: IChat.Props) {
-    super({
-      ...props,
-    });
-  }
-
   get message() {
     return this.refs.chatFooter.message;
   }

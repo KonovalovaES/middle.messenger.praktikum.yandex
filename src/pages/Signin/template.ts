@@ -8,6 +8,7 @@ export default `
       fields=fields
       onMainButtonClick=onSignin
       ref='signinForm'
+      onSubmit=onSignin
     }}}
   </main>
 `;

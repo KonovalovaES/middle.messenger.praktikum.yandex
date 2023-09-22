@@ -8,11 +8,23 @@ export default `
       iconClass='icon_blue'
     }}}
     <form class='profile'>
-      {{{ ProfileHeader user=user editProfile=editProfile }}}
-      {{{ ProfileBody ref='profileData' fields=fields
-              user=user editProfile=editProfile editPassword=editPassword }}}
+      {{{ ProfileHeader 
+        user=user
+        editProfile=editProfile
+      }}}
+      {{{ ProfileBody 
+        ref='profileData' 
+        fields=fields
+        user=user
+        editProfile=editProfile
+        editPassword=editPassword
+      }}}
       {{{ ProfileFooter
-              editProfile=editProfile editPassword=editPassword onSave=onSave onCancel=onCancel }}}
+        editProfile=editProfile
+        editPassword=editPassword
+        onSave=onSave
+        onCancel=onCancel
+      }}}
     </form>
     {{# if exit }}
       {{{ Modal

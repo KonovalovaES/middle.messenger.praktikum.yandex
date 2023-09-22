@@ -9,6 +9,7 @@ namespace IIconButton {
     icon: string;
     iconClass: string;
     onClick?: () => void;
+    events: Event;
   }
 }
 

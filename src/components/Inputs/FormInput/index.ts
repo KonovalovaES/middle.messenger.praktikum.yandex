@@ -1,6 +1,5 @@
 import Block from '../../../core/Block';
 import template from './template';
-import { customHasOwnProperty } from '../../../utils/helpers';
 
 import type IFormInput from './types/types';
 
@@ -8,10 +7,10 @@ import './style.scss';
 
 export default class FormInput extends Block<IFormInput.Props, IFormInput.Refs> {
   constructor(props: IFormInput.Props) {
-    super({
-      ...props,
-      onBlur: () => this._isValid,
-    });
+    super(props);
+
+    this.props.onBlur = () => this._isValid;
+    this.props.validate = this.props.validate || (() => true);
   }
 
   private get _value() {
@@ -27,13 +26,7 @@ export default class FormInput extends Block<IFormInput.Props, IFormInput.Refs> 
   }
 
   private get _isValid() {
-    if (customHasOwnProperty(this.props, 'validate')) {
-      return this.props.validate(this._value, this.refs.errorText);
-    }
-
-    console.error('Метод валидации не найден');
-
-    return false;
+    return this.props.validate(this._value, this.refs.errorText);
   }
 
   render(): string {

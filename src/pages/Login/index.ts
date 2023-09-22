@@ -1,10 +1,10 @@
 import Block from '../../core/Block';
 import template from './template';
+import { customHasOwnProperty } from '../../utils/helpers';
 
 import type ILogin from './types/types';
 
 import './style.scss';
-import { customHasOwnProperty } from '../../utils/helpers';
 
 export default class Login extends Block<ILogin.Props, ILogin.Refs> {
   constructor(props: ILogin.Props) {

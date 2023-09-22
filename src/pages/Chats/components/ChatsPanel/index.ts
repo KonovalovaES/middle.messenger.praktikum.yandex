@@ -6,13 +6,7 @@ import type IChatsPanel from './types/types';
 import './style.scss';
 
 export default class ChatsPanel extends Block<IChatsPanel.Props, IChatsPanel.Refs> {
-  constructor(props: IChatsPanel.Props) {
-    super({
-      ...props,
-    });
-  }
-
-  get searchSting() {
+  get searchString() {
     return this.refs.searchForm.value;
   }
 

@@ -8,6 +8,7 @@ export default `
       fields=fields
       onMainButtonClick=onLogin
       ref='loginForm'
+      onSubmit=onLogin
     }}}
   </main>
 `;

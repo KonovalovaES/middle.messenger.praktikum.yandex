@@ -10,6 +10,7 @@ namespace IButton {
     type: ButtonType;
     className: string;
     onClick?: () => void;
+    events: Event;
   }
 }
 

@@ -13,6 +13,12 @@ export default class Profile extends Block<IProfile.Props, IProfile.Refs> {
     if (customHasOwnProperty(props, 'onSave')) {
       this.props.onSave = props.onSave?.bind(this);
     }
+
+    this.props.events = {
+      submit: this.props.onSave || ((event: Event) => {
+        event.preventDefault();
+      }),
+    };
   }
 
 

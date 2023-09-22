@@ -7,44 +7,77 @@ import Profile from '../pages/Profile';
 export function onAddUser(this: Chats, event: Event) {
   event.preventDefault();
 
-  console.log({ newUserName: this.refs.chatSpace.newUserName[1] });
+  const { newUserName } = this.refs.chatSpace;
+
+  if (newUserName.trim()) {
+    console.log({ newUserName });
+  }
 }
 
 export function onCreateChat(this: Chats, event: Event) {
   event.preventDefault();
 
-  console.log({ newChatName: this.refs.createChatModal.newChatName[1] });
+  const { newChatName } = this.refs.createChatModal;
+
+  if (newChatName.trim()) {
+    console.log({ newChatName });
+  }
 }
 
 export function onSearch(this: Chats, event: Event) {
   event.preventDefault();
 
-  console.log({ search: this.refs.chatPanel.searchSting });
+  const { searchString: search } = this.refs.chatPanel;
+
+  if (search.trim()) {
+    console.log({ search });
+  }
 }
 
 export function onSend(this: Chats, event: Event) {
   event.preventDefault();
 
-  if (this.isMessageValid) {
-    console.log({ message: this.refs.chatSpace.message });
+  const { message } = this.refs.chatSpace;
+
+  if (message.trim()) {
+    console.log({ message });
   }
 }
 
 export function onLogin(this: Login, event: Event) {
   event.preventDefault();
 
+  const { values } = this.refs.loginForm;
 
-  console.log(this.refs.loginForm.values);
+  for (const value of values) {
+    if (!Object.values(value)[0]) {
+      return;
+    }
+  }
+
+  console.log(values);
 }
 
 export function onSignin(this: Signin, event: Event) {
   event.preventDefault();
 
-  console.log(this.refs.signinForm.values);
+  const { values } = this.refs.signinForm;
+
+  for (const value of values) {
+    if (!Object.values(value)[0]) {
+      return;
+    }
+  }
+
+  console.log(values);
 }
 
 export function onSave(this: Profile, event: Event) {
   event.preventDefault();
 
-  console.log(this.refs.profileData.values);
+  const { values } = this.refs.profileData;
+
+  if (values.length > 0) {
+    console.log(values);
+  }
 }

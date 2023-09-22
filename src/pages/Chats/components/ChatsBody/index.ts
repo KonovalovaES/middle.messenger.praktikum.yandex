@@ -6,12 +6,6 @@ import type IChatsBody from './types/types';
 import './style.scss';
 
 export default class ChatsBody extends Block<IChatsBody.Props> {
-  constructor(props: IChatsBody.Props) {
-    super({
-      ...props,
-    });
-  }
-
   render() {
     return template;
   }

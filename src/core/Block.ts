@@ -39,11 +39,10 @@ abstract class Block <Props extends BaseProps = BaseProps, Refs extends RefsType
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  /** Добавить обработчики событий для элемента */
   _addEventListeners() {
-    const { events } = this.props.events;
+    const { events = {} } = this.props;
 
-    if (!this._element || !events) {
+    if (!this._element) {
       return;
     }
 
