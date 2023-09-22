@@ -76,6 +76,7 @@ const pages: IPages = {
     props: {
       users,
       chats,
+      onSearch,
     },
   },
   chat: {
