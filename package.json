@@ -1,0 +1,38 @@
+{
+  "name": "messenger",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": "16.14.0"
+  },
+  "scripts": {
+    "dev": "vite --open",
+    "lint": "eslint . --ext ts --fix",
+    "prebuild": "tsc --noEmit",
+    "build": "npm run prebuild && vite build --emptyOutDir",
+    "preview": "vite preview",
+    "server": "node server.js",
+    "start": "npm run build && npm run server"
+  },
+  "devDependencies": {
+    "@types/node": "20.6.0",
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "eslint": "^8.49.0",
+    "eslint-plugin-import": "^2.28.1",
+    "stylelint": "^15.10.3",
+    "vite": "4.4.5"
+  },
+  "dependencies": {
+    "@types/handlebars": "^4.1.0",
+    "@types/uuid": "^9.0.3",
+    "express": "4.18.2",
+    "handlebars": "4.7.8",
+    "sass": "1.66.1",
+    "scss": "0.2.4",
+    "typescript": "3.9.10",
+    "uuid": "^9.0.0",
+    "vite-plugin-handlebars": "1.6.0"
+  }
+}
