@@ -1,7 +1,6 @@
-@import '../../../../consts.scss';
-
 .body_chat {
   @include text($middle-background-color);
+
   cursor: default;
   width: 100%;
   height: auto;
@@ -15,6 +14,7 @@
 
 .chat__date {
   @include text($dark-text-color, bold);
+
   margin: $main-margin 0;
   text-align: center;
 }

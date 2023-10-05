@@ -1,6 +1,7 @@
 import type ISocket from './types/types';
 import store from '../Store/Store';
 import chatsController from '../../controllers/ChatsController';
+import { handleError } from '../../controllers/helpers';
 
 const URL = 'wss://ya-praktikum.tech/ws/chats';
 
@@ -43,9 +44,14 @@ export default class Socket {
       console.log(`Код: ${event.code} | Причина: ${event.reason}`);
     });
 
-    this.socket.addEventListener('message', async (event: MessageEvent) => (
-      await chatsController.setMessages(JSON.parse(event.data))
-    ));
+    this.socket.addEventListener('message', async (event: MessageEvent) => {
+      try {
+        console.log('NEW', JSON.parse(event.data));
+        await chatsController.setMessages(JSON.parse(event.data));
+      } catch (error) {
+        handleError(error);
+      }
+    });
 
     this.socket.addEventListener('error', (event) => console.error('Ошибка', event));
   }
@@ -56,7 +62,12 @@ export default class Socket {
       type: 'message',
     }));
 
-    await chatsController.getAllChats();
+    // await chatsController.getAllChats();
+    store.set('chat.last_message', {
+      user: store.state.user,
+      time: new Date(),
+      content,
+    });
   }
 
   getOldMessages() {

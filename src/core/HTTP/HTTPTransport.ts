@@ -2,6 +2,7 @@ import METHODS from './types/consts';
 import queryStringify from './helpers/helpers';
 
 import type { RequestOptions, RequestHandlerType } from './types/types';
+import { handleError } from '../../controllers/helpers';
 
 export default class HTTPTransport {
   private readonly _url: string;
@@ -62,11 +63,15 @@ export default class HTTPTransport {
       xhr.timeout = timeout;
 
       xhr.onload = () => {
-        if (xhr.status >= 200 && xhr.status < 300) {
-          resolve(xhr.response.includes('"') ? JSON.parse(xhr.response) : xhr.response);
-        }
+        try {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(xhr.response.includes('"') ? JSON.parse(xhr.response) : xhr.response);
+          }
 
-        reject(xhr.response.includes('"') ? JSON.parse(xhr.response) : xhr.response);
+          reject(xhr.response.includes('"') ? JSON.parse(xhr.response) : xhr.response);
+        } catch (error) {
+          handleError(error);
+        }
       };
 
       xhr.onabort = () => reject(new Error('Запрос был отменен'));

@@ -27,9 +27,9 @@ class Router {
   }
 
   start() {
-    window.onpopstate = (event: PopStateEvent) => {
-      return this._onRoute((event.currentTarget as typeof window)?.location.pathname);
-    };
+    window.onpopstate = (event: PopStateEvent) => (
+      this._onRoute((event.currentTarget as typeof window)?.location.pathname)
+    );
 
     this._onRoute(window.location.pathname);
   }

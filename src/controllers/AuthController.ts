@@ -4,7 +4,7 @@ import store from '../core/Store/Store';
 import router from '../core/Router/Router';
 import { PAGES } from '../consts';
 import { customHasOwnProperty } from '../utils/helpers';
-import handleError from './helpers';
+import { handleError } from './helpers';
 
 class AuthController {
   async signup(data?: IAuthAPI.SignupRequest) {

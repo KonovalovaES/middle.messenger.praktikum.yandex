@@ -1,7 +1,6 @@
-@import '../../consts.scss';
-
 .message {
   @include display-flex(normal, row, flex-start);
+
   margin: $main-margin;
   max-width: 70%;
   min-width: 15%;
@@ -18,11 +17,12 @@
 
 .message__content {
   @include display-flex(normal, column, stretch);
+
   padding: $main-padding;
   border-radius: $small-border-radius;
   width: 70%;
   word-wrap: break-word;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
   color: $middle-text-color;
 }
 
@@ -40,12 +40,14 @@
 
 .message__time {
   @include text($middle-text-color, bold);
+
   align-self: end;
   font-size: smaller;
 }
 
 .message__image {
   @include small-vertical-margin();
+
   border-radius: $small-border-radius;
 }
 

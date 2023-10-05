@@ -6,7 +6,7 @@
       "dom.iterable",
       "es6",
       "esnext",
-      "scriptHost",
+      "scriptHost"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -27,7 +27,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "build",
-    "types": [],
+    "types": []
   },
   "exclude": [
     "node_modules",

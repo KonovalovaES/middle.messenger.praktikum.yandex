@@ -1,8 +1,7 @@
-@import '../../consts.scss';
-
 @mixin button($color: $dark-text-color) {
   @include display-flex();
   @include text($color);
+
   padding: $main-padding;
   margin: $small-margin $main-margin;
   border: none;
@@ -13,11 +12,13 @@
 
 .primary-button {
   @include button($light);
+
   background-color: $middle-background-color;
 }
 
 .link-button {
   @include button($middle-background-color);
+
   background-color: transparent;
 }
 
@@ -31,6 +32,7 @@
 
 .button_panel {
   @include button();
+
   background-color: transparent;
   margin: 0;
   align-self: end;
@@ -38,6 +40,7 @@
 
 .button_chats {
   @include button();
+
   background-color: transparent;
   margin: 0;
   align-self: end;

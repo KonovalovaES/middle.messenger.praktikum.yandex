@@ -1,6 +1,6 @@
 import Block from '../Block/Block';
 import store from './Store';
-import { StoreEvents } from './types/consts';
+import StoreEvents from './types/consts';
 import { deepClone, isDeepEqual } from './helpers/helpers';
 
 import type { Indexed, IStore } from './types/types';

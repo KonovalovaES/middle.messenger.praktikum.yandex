@@ -1,3 +1,5 @@
-export enum StoreEvents {
+enum StoreEvents {
   Updated = 'updated',
 }
+
+export default StoreEvents;

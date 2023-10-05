@@ -3,7 +3,7 @@ import store from '../core/Store/Store';
 import usersAPI from '../api/UsersAPI';
 import Socket from '../core/Socket/Socket';
 import modalsController from './ModalsController';
-import handleError from './helpers';
+import { handleError, sortMessages } from './helpers';
 
 const findDifference = (arr1: number[], arr2: number[]) => {
   let result = 0;
@@ -46,8 +46,6 @@ class ChatsController {
 
   async getAllChats() {
     try {
-      store.set('loading', true);
-
       const chats = await chatsAPI.get();
 
       if (!store.state.chats) {
@@ -57,18 +55,12 @@ class ChatsController {
           users: (await chatsAPI.getUsers(chat.id)),
         })));
 
-        store.set('chats', newChats.sort((chat1, chat2) => (
-          new Date(chat2?.last_message?.time)).getTime() - (new Date(chat1?.last_message?.time))
-          .getTime()));
+        store.set('chats', sortMessages(newChats));
       } else {
-        store.set('chats', chats.sort((chat1, chat2) => (
-          new Date(chat2?.last_message?.time)).getTime() - (new Date(chat1?.last_message?.time))
-          .getTime()));
+        store.set('chats', sortMessages(chats));
       }
     } catch (error) {
       handleError(error);
-    } finally {
-      store.set('loading', false);
     }
   }
 
@@ -145,6 +137,10 @@ class ChatsController {
   }
 
   sendMessage(content: string) {
+    if (!content) {
+      return;
+    }
+
     store.state.chat?.socket?.sendMessage(content);
   }
 
@@ -155,9 +151,10 @@ class ChatsController {
       newChatId = chatId;
     }
 
-    store.set('chat', { ...store.state.chats?.find((chat) => chat.id === newChatId), messages: [] });
-
-    if (newChatId) {
+    if (!newChatId) {
+      store.set('chat', void 0);
+    } else  {
+      store.set('chat', { ...store.state.chats?.find((chat) => chat.id === newChatId), messages: [] });
       store.state.chat?.socket?.getOldMessages();
     }
 
@@ -182,10 +179,14 @@ class ChatsController {
 
   async setMessages(data: Record<string, unknown> | Record<string, unknown>[]) {
     if (Array.isArray(data)) {
-      store.set('chat.messages', [...store.state.chat?.messages || [], ...data.reverse()]);
+      store.set('chat.messages', data.reverse());
     } else {
       if (data.type === 'message') {
         store.set('chat.messages', [...store.state.chat?.messages || [], data]);
+
+        if (data.user_id === store.state.user?.id) {
+          return;
+        }
       }
     }
 

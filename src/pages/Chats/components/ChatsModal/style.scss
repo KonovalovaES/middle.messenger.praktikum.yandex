@@ -1,7 +1,6 @@
-@import '../../../../consts.scss';
-
 .wrapper_modal {
   @include display-flex();
+
   position: absolute;
   top: 0;
   left: 0;
@@ -13,10 +12,11 @@
 
 .modal {
   @include display-flex(normal, column, stretch);
+
   border-radius: $main-border-radius;
   z-index: 5000;
   background-color: $light;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
   padding: $main-padding;
   width: 20rem;
 }

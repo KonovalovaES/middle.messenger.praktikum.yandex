@@ -1,6 +1,6 @@
 import usersAPI from '../api/UsersAPI';
 import store from '../core/Store/Store';
-import handleError from './helpers';
+import { handleError } from './helpers';
 
 import type IUsersAPI from '../api/UsersAPI/types/types';
 

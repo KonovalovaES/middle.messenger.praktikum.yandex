@@ -24,6 +24,7 @@ interface IMessage {
   type: 'message';
   time: string;
   user_id: number;
+  chat_id: number;
 }
 
 interface IChatInfo {
@@ -71,7 +72,4 @@ export interface IStore {
   chats?: (ChatPreview & { users?: IUser[], socket?: Socket })[];
   chat?: IChatInfo;
   loading?: boolean;
-  sockets?: Record<number, Socket>;
-  unreadCount?: Record<number, number>;
-  file?: FormData;
 }

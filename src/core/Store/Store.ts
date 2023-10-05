@@ -1,5 +1,5 @@
 import EventBus from '../EventBus/EventBus';
-import { StoreEvents } from './types/consts';
+import StoreEvents from './types/consts';
 import set from './helpers/helpers';
 
 import type { IStore } from './types/types';
