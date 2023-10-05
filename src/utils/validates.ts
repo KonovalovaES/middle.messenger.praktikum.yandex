@@ -1,4 +1,4 @@
-import Block from '../core/Block';
+import Block from '../core/Block/Block';
 
 export const loginValidate = (str: string, Error: Block) => {
   if (str.length === 0) {
@@ -47,7 +47,6 @@ export const loginValidate = (str: string, Error: Block) => {
 };
 
 export const passwordValidate = (str: string, Error: Block) => {
-  // от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра
   if (str.length === 0) {
     Error.setProps({ text: 'Введите пароль' });
   }
@@ -84,7 +83,7 @@ export const passwordValidate = (str: string, Error: Block) => {
 export const passwordRepeatValidate = (passwords: [string, string], Error: Block) => {
   const [originalPass, repeatPass] = passwords;
 
-  if (originalPass !== repeatPass) {
+  if (originalPass && repeatPass && originalPass !== repeatPass) {
     Error.setProps({ text: 'Пароли должны совпадать' });
 
     return false;

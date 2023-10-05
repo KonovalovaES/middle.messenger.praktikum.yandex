@@ -13,6 +13,7 @@ export default `
       fields=fields
       onMainButtonClick=onAction
       onAdditionalButtonClick=onCancel
+      onAvatarChange=onAvatarChange
     }}}
   </div>
 `;

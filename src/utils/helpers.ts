@@ -1,14 +1,17 @@
 import Handlebars from 'handlebars';
 
-import chats from '../mock/chats';
-import { userProfileInfo } from '../mock/users';
+import store from '../core/Store/Store';
 import { DAYS_OF_WEEK, DAY, WEEK } from '../consts';
 
-import type { Message, GroupedMessages, UserChat, ChatPreview } from '../mock/types/types';
-import type { ContextType } from '../core/types/types';
+import type { IMessage, IUser } from '../core/Store/types/types';
+
+export type GroupedMessages = Record<string, IMessage[]>;
 
 // Получаем объект с группами сообщений, в ключах - даты
-export const groupMessagesByDate = (messages: Message[]) => {
+export const groupMessagesByDate = (messages?: IMessage[]) => {
+  if (!messages) {
+    return {};
+  }
   const groupedMessages: GroupedMessages = {};
 
   messages.forEach((message) => {
@@ -26,11 +29,11 @@ export const groupMessagesByDate = (messages: Message[]) => {
 
 // Получаем отсортированные даты групп сообщений
 export const sortedGroupDates = (groupedMessages: GroupedMessages) => Object.keys(groupedMessages)
-  .sort((item1, item2) => (new Date(item1)).getTime() - (new Date(item2)).getTime());
+  .sort((item1, item2) => (new Date(item2)).getTime() - (new Date(item1)).getTime());
 
 // Получаем сообщения по определенной дате
 export const getMessagesAtDate = (messageGroups: GroupedMessages, date: string) => (
-  messageGroups[date]
+  messageGroups[date].reverse()
 );
 
 export const formatChatTime = (dateStr: string) => {
@@ -73,9 +76,12 @@ export const getDate = (dateStr: string) => {
   return date.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
 };
 
-export const isCurrentUser = (login: string) => login === userProfileInfo.login;
+export const isCurrentUserById = (id: number) => id === store.state.user?.id;
+export const isCurrentUserByLogin = (login: string) => login === store.state.user?.login;
 
-export const countMembers = (users: UserChat[]) => (users.length > 2 ? users.length : null);
+export const countMembers = (users?: IUser[]) => (
+  users && users.length > 2 ? users.length : null
+);
 
 export const getMembers = (count: number) => {
   if (count % 10 === 1 && count % 100 !== 11) {
@@ -91,7 +97,7 @@ export const getMembers = (count: number) => {
 
 export const isAnyChatOpen = (chatId: number) => !!(chatId || chatId === 0);
 
-const getChatInfo = (chatId: number) => chats.find((chat) => chat.id === chatId);
+const getChatInfo = (chatId: number) => store.state.chats?.find((chat) => chat.id === chatId);
 
 export const getChatAvatar = (chatId: number) => {
   const chat = getChatInfo(chatId);
@@ -123,29 +129,61 @@ export const getIcon = (iconName: string, className: string) => {
 
 export const getMessageClass = (outgoing: boolean) => (outgoing ? 'outgoing' : 'incoming');
 
-export const createHref = (src: string) => new URL(`/static/images/${src}`, import.meta.url).href;
+export const createHref = (src: string) => `https://ya-praktikum.tech/api/v2/resources${src}`;
 
 export const and = (item1: unknown, item2: unknown) => !!(item1 && item2);
 
 export const or = (item1: unknown, item2: unknown) => !!(item1 || item2);
 
-export const compile = (template: string, context: ContextType) => {
-  const data: ContextType = {
-    ...context,
-    __children: [],
-    __refs: {},
-  };
-  const html = Handlebars.compile(template)(data);
-
-  return{ html, children: data.__children, refs: data.__refs };
-};
-
-export const filterChats = (chats: ChatPreview[], query: string) => (
-  chats.filter((chat) => chat.title.toLowerCase().includes(query.toLowerCase()))
-);
-
 export const customHasOwnProperty = (obj: object, prop: string) => (
   Object.prototype.hasOwnProperty.call(obj, prop) && prop !== void 0
 );
 
-export const isFunction = (prop: unknown): prop is object => typeof prop === 'function';
+export const getFunction = (
+  value1: boolean,
+  function1: () => void,
+  value2: boolean,
+  function2: () => void,
+) => {
+  if (value1) {
+    return function1;
+  }
+
+  if (value2) {
+    return function2;
+  }
+};
+
+export const getName = (display_name: string | null, first_name: string, second_name: string) => (
+  display_name ? display_name : `${first_name} ${second_name}`
+);
+
+export const getNameById = (id: number) => {
+  const user = store.state.chat?.users?.find((user) => user.id === id);
+
+  return user ? getName(user.display_name, user.first_name, user.second_name) : 'Unknown User';
+};
+
+export const getNameByLogin = (login: string, id: number) => {
+  const user = store.state.chats
+    ? store.state.chats
+      ?.find((chat) => chat.id === id)?.users
+      ?.find((user: IUser) => user.login === login)
+    : void 0;
+
+  return user ? getName(user.display_name, user.first_name, user.second_name) : 'Unknown User';
+};
+
+export const getNewMessagesCount = (id: number) => (
+  store.state.chats?.find((chat) => chat.id === id)?.unread_count
+);
+
+export const getUserAvatar = (userId: number) => {
+  const user = store.state.chat?.users?.find((user) => user.id === userId);
+
+  if (user) {
+    return user.avatar;
+  }
+};
+
+

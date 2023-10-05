@@ -2,7 +2,9 @@ import FormWithoutButtons from '../../../../../components/Forms/FormWithoutButto
 
 namespace IChatsFooter {
   type Props = {
-    showFilesMenu: boolean;
+    isFilesMenuOpen: boolean;
+    openFilesMenu: () => void;
+    onSend: (event: Event) => void;
   }
 
   type Refs = {

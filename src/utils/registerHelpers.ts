@@ -6,7 +6,7 @@ import {
   formatChatTime,
   formatMessageTime,
   getDate,
-  isCurrentUser,
+  isCurrentUserById,
   countMembers,
   getMembers,
   isAnyChatOpen,
@@ -19,7 +19,14 @@ import {
   getMessageClass,
   createHref,
   and,
-  or, filterChats,
+  or,
+  getFunction,
+  getName,
+  getNameById,
+  getNewMessagesCount,
+  isCurrentUserByLogin,
+  getNameByLogin,
+  getUserAvatar,
 } from './helpers';
 
 const registerHelpers = () => {
@@ -27,7 +34,8 @@ const registerHelpers = () => {
   Handlebars.registerHelper(HELPERS.getChatTime, formatChatTime);
   Handlebars.registerHelper(HELPERS.getMessageTime, formatMessageTime);
   Handlebars.registerHelper(HELPERS.getDate, getDate);
-  Handlebars.registerHelper(HELPERS.isCurrentUser, isCurrentUser);
+  Handlebars.registerHelper(HELPERS.isCurrentUserById, isCurrentUserById);
+  Handlebars.registerHelper(HELPERS.isCurrentUserByLogin, isCurrentUserByLogin);
   Handlebars.registerHelper(HELPERS.isCountMembersShow, countMembers);
   Handlebars.registerHelper(HELPERS.getMembers, getMembers);
   Handlebars.registerHelper(HELPERS.isAnyChatOpen, isAnyChatOpen);
@@ -41,7 +49,12 @@ const registerHelpers = () => {
   Handlebars.registerHelper(HELPERS.and, and);
   Handlebars.registerHelper(HELPERS.or, or);
   Handlebars.registerHelper(HELPERS.createHref, createHref);
-  Handlebars.registerHelper(HELPERS.filterChats, filterChats);
+  Handlebars.registerHelper(HELPERS.getFunction, getFunction);
+  Handlebars.registerHelper(HELPERS.getName, getName);
+  Handlebars.registerHelper(HELPERS.getNameById, getNameById);
+  Handlebars.registerHelper(HELPERS.getNameByLogin, getNameByLogin);
+  Handlebars.registerHelper(HELPERS.getNewMessagesCount, getNewMessagesCount);
+  Handlebars.registerHelper(HELPERS.getUserAvatar, getUserAvatar);
 };
 
 export default registerHelpers;

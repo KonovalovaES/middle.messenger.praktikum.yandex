@@ -1,6 +1,5 @@
-import Block from '../../../core/Block';
+import Block from '../../../core/Block/Block';
 import template from './template';
-import ProfileItem from '../../../pages/Profile/components/ProfileItem';
 
 import type IForm from './types/types';
 
@@ -22,8 +21,20 @@ export default class Form extends Block<IForm.Props, IForm.Refs> {
       return Object.entries(this.refs)[0][1].value;
     }
 
-    return Object.entries(this.refs)
-      .map(([key, component]: [string, ProfileItem]) => ({ [key]: component.value }));
+    let notValid = false;
+
+    const fields = Object.entries(this.refs)
+      .reduce((acc, [key, component]) => {
+        if (!component.value) {
+          notValid = true;
+        }
+
+        acc[key] = component.value;
+
+        return acc;
+      }, {} as Record<string, string | void>);
+
+    return notValid ? void 0 : fields;
   }
 
   render(): string {

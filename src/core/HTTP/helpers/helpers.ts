@@ -1,9 +1,10 @@
-const queryStringify = (data?: Record<string, unknown> | string) => {
+const queryStringify = <Request>(data?: Request | string) => {
   if (!data || typeof data === 'string') {
     return data;
   }
 
-  return Object.keys(data).reduce((acc, key) => `${acc}${acc.length === 1 ? '' : '&'}${key}=${String(data[key])}`, '?');
+  return Object.entries(data)
+    .reduce((acc, [key, value]) => `${acc}${acc.length === 1 ? '' : '&'}${key}=${value}`, '?');
 };
 
 export default queryStringify;

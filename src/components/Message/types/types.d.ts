@@ -5,6 +5,7 @@ namespace IMessage {
     content: string;
     img: string;
     time: number;
+    userAvatar: string;
   }
 }
 

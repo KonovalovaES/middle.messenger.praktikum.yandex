@@ -3,6 +3,8 @@
 .message {
   @include display-flex(normal, row, flex-start);
   margin: $main-margin;
+  max-width: 70%;
+  min-width: 15%;
 }
 
 .message_incoming {
@@ -18,7 +20,7 @@
   @include display-flex(normal, column, stretch);
   padding: $main-padding;
   border-radius: $small-border-radius;
-  max-width: 70%;
+  width: 70%;
   word-wrap: break-word;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   color: $middle-text-color;
@@ -45,4 +47,20 @@
 .message__image {
   @include small-vertical-margin();
   border-radius: $small-border-radius;
+}
+
+.message_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.message_wrapper.incoming {
+  justify-content: flex-start;
+  margin-left: $small-margin;
+}
+
+.message_wrapper.outgoing {
+  justify-content: flex-end;
+  margin-right: $small-margin;
 }

@@ -1,22 +1,16 @@
 // language=hbs
 export default `
-  <div class='image-preview'>
+  <div class='image-preview {{ imgClass }}'>
     {{# if withAddIcon }}
-      {{{ IconButton
-        class='button_action button_add'
-        title='Удалить фото'
-        icon='PlusIcon'
-        iconClass='icon_blue'
-      }}}
+      {{{ UploadButton onClick=onUpload }}}
     {{/if}}
     {{# if withRemoveIcon }}
-      {{{ IconButton
-        class='button_action button_remove'
-        title='Удалить фото'
-        icon='XmarkIcon'
-        iconClass='icon_blue'
-      }}}
+      {{{ RemoveButton onClick=onRemove }}}
     {{/if}}
-    <img class='previewImage' src='{{ createHref img }}' alt='Загруженное фото' />
+      <img
+        class='previewImage {{ imgClass }}'
+        src='{{# if img }}{{ createHref img }}{{ else }}/static/images/user.png{{/if}}'
+        alt='Загруженное фото'
+      />
   </div>
 `;

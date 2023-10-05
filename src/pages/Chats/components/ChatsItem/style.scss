@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.chat-item:hover {
+  background-color: #00000011;
+}
+
 .chat-item_active {
   background-color: $light-shadow-color;
 }

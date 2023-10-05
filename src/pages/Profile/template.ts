@@ -1,37 +1,37 @@
 // language=hbs
 export default `
   <main class='wrapper wrapper_max wrapper_profile'>
+  {{# if loading }}
+      {{{ Loader }}}
+  {{ else }}
     {{{ IconButton
       class='button_chats'
       title='Чаты'
       icon='AngleLeftIcon'
       iconClass='icon_blue'
+      onClick=goToChats
     }}}
     <form class='profile'>
-      {{{ ProfileHeader 
-        user=user
-        editProfile=editProfile
-      }}}
-      {{{ ProfileBody 
-        ref='profileData' 
-        fields=fields
-        user=user
-        editProfile=editProfile
-        editPassword=editPassword
-      }}}
+      {{{ ProfileHeader }}}
+      {{{ ProfileBody ref='profileData' }}}
       {{{ ProfileFooter
-        editProfile=editProfile
-        editPassword=editPassword
         onSave=onSave
-        onCancel=onCancel
+        onExit=onExit
+        onEditProfile=onEditProfile
+        onEditPassword=onEditPassword
+        onSaveProfile=onSaveProfile
+        onSavePassword=onSavePassword
       }}}
     </form>
-    {{# if exit }}
+    {{# if isExitModalOpen }}
       {{{ Modal
         title='Выход'
         buttonTitle='Выйти'
         text='Вы действительно хотите выйти из профиля?'
+        onCancel=onExit
+        onAction=logout
       }}}
     {{/ if }}
+  {{/ if }}
   </main>
 `;

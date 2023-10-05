@@ -28,16 +28,19 @@ export default `
           withRemoveIcon=(or avatar '')
           avatar=avatar
           errorText=errorText
+          onChange=onAvatarChange
         }}}
       {{/if}}
     </div>
     <div class='form__footer'>
-      {{{ Button
-        type='primary'
-        title=mainButtonTitle
-        className='modal-width'
-        onClick=onMainButtonClick
-      }}}
+      {{# if mainButtonTitle }}
+        {{{ Button
+          type='primary'
+          title=mainButtonTitle
+          className='modal-width'
+          onClick=onMainButtonClick
+        }}}
+      {{/if}}
       {{{ Button
         type='link'
         title=additionalButtonTitle

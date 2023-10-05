@@ -3,7 +3,7 @@ export default `
   <div class='item'>
     <div class='item__data'>
       <span class='item__label'>{{ label }}</span>
-      {{# if (or editProfile editPassword) }}
+      {{# if (or isEditProfileOpen isEditPasswordOpen) }}
         {{{ TextInput
           className='item__value'
           value=value

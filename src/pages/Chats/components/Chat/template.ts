@@ -1,48 +1,53 @@
 // language=hbs
 export default `
   <div class='chat-wrapper' ref='chat'>
-    {{{ ChatHeader
-      avatar=avatar
-      title=title
-      users=users
-      members=members
-      showMembers=showMembers
-    }}}
+    {{{ ChatHeader }}}
     <div class='chat-space__divider'></div>
-    {{# if showMembersMenu }}
+    {{# if isChatMenuOpen }}
       {{{ MembersMenu }}}
     {{/ if }}
-    {{{ ChatBody messageGroupsOrder=messageGroupsOrder messageGroups=messageGroups }}}
+    {{{ ChatBody }}}
     <div class='chat-space__divider'></div>
-    {{{ ChatFooter showFilesMenu=showFilesMenu ref='chatFooter' onSend=onSend }}}
-    {{# if showAddUserModal }}
+    {{{ ChatFooter ref='chatFooter' }}}
+    {{# if isAddUserModalOpen }}
       {{{ Modal
         title='Добавить пользователя'
         buttonTitle='Добавить'
         label='Логин'
         inputName='add'
-        fields=fields
+        fields=addUserFields
         ref='addUserModal'
-        onAction=onAddUser
+        onAction=addUser
+        onCancel=closeAddUserModal
       }}}
-    {{ else }}
-      {{# if showRemoveUserModal }}
+      {{/ if }}
+      {{# if isRemoveUserModalOpen }}
         {{{ Modal
           title='Удалить пользователя'
           buttonTitle='Удалить'
           text='Вы действительно хотите удалить пользователя из чата?'
+          onCancel=closeRemoveUserModal
+          onAction=removeUser
         }}}
-      {{ else }}
-        {{# if showAvatarLoadModal }}
-          {{{ Modal
-            title='Изменить аватар чата'
-            buttonTitle='Сохранить'
-            imgLoad=true
-            errorText='Ошибка, попробуйте еще раз'
-            avatar=avatar
-          }}}
-        {{/ if }}
       {{/ if }}
-    {{/ if }}
+      {{# if isAvatarLoadModalOpen }}
+        {{{ Modal
+          title='Изменить аватар чата'
+          imgLoad=true
+          errorText='Ошибка, попробуйте еще раз'
+          avatar=avatar
+          onCancel=closeAvatarLoadModal
+          onAvatarChange=onAvatarChange
+        }}}
+      {{/ if }}
+      {{# if isRemoveChatModalOpen }}
+        {{{ Modal
+          title='Удалить чат'
+          buttonTitle='Удалить'
+          text='Вы действительно хотите удалить чат? Это действие нельзя отменить'
+          onCancel=closeRemoveChatModal
+          onAction=removeChat
+        }}}
+      {{/ if }}
   </div>
 `;

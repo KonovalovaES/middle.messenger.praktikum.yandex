@@ -268,7 +268,7 @@
     // https://eslint.org/docs/latest/rules/id-length
     "id-length": "warn",
     // https://eslint.org/docs/latest/rules/camelcase
-    "camelcase": "warn",
+    "camelcase": "off",
     // https://eslint.org/docs/latest/rules/new-cap
     "new-cap": "error",
     // https://eslint.org/docs/latest/rules/no-restricted-globals

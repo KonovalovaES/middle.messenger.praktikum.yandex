@@ -2,10 +2,11 @@
 export default `
   <div class='header header_profile'>
     {{{ ImageInput
-      avatar=user.avatar
-      withAddIcon=editProfile
-      withRemoveIcon=(and editProfile user.avatar)
+      avatar=avatar
+      withAddIcon=isEditProfileOpen
+      withRemoveIcon=(and isEditProfileOpen avatar)
+      onChange=onAvatarChange
     }}}
-    <p class='header__title'>{{ user.display_name }}</p>
+    <p class='header__title'>{{ display_name }}</p>
   </div>
 `;

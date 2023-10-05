@@ -52,6 +52,7 @@
 
 .button_icon:hover {
   background-color: $main-background-color;
+  border-radius: $small-border-radius;
 }
 
 .button_icon:hover .icon {

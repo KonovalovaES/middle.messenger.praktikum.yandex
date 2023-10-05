@@ -3,9 +3,9 @@ export default `
   <div class='chat-panel' ref={{ ref }}>
     <div class='chat-panel__header'>
       {{{ FormWithoutButtons
-        search=search
         ref='searchForm'
         refInput='searchInput'
+        onChange=onSearch
         onSubmit=onSearch
         className='input_chat input_search'
         placeholder='Поиск'
@@ -17,18 +17,27 @@ export default `
         title='Создать чат'
         icon='PenIcon'
         iconClass='icon_blue'
+        onClick=openCreateChatModal
       }}}
       {{{ IconButton
         class='button_panel'
         title='Профиль'
         icon='AngleRightIcon'
         iconClass='icon_blue'
+        onClick=goToProfile
       }}}
     </div>
-    {{# if search }}
-        {{{ ChatList search=search chats=(filterChats chats search) }}}
-    {{ else }}
-        {{{ ChatList search=search chats=chats }}}
-    {{/if}}
+    {{{ ChatList }}}
+      {{# if isCreateChatModalOpen }}
+        {{{ Modal
+          title='Создать чат'
+          buttonTitle='Создать'
+          text='Введите название чата'
+          fields=newChatFields
+          onAction=createChat
+          onCancel=openCreateChatModal
+          ref='createChatModal'
+        }}}
+      {{/ if }}
   </div>
 `;

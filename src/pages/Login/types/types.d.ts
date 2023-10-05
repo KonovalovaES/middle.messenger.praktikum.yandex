@@ -1,19 +1,17 @@
-import { InputField } from '../../../mock/types/types';
-import Form from '../../../components/Forms/Form/Form';
-import Login from '../Login';
+import type { InputField } from '../../../mock/types/types';
+import type Form from '../../../components/Forms/Form/Form';
+import type { IUser } from '../../../core/Store/types/types';
 
 namespace ILogin {
   type Props = {
     fields: InputField[];
     onLogin: (event: Event) => void;
+    goToSignup: () => void;
+    user?: IUser;
+    loader?: boolean;
   }
 
   type Refs = { loginForm: Form }
-
-  interface Components {
-    Component: typeof Login,
-    props: Pick<Props, onLogin>,
-  }
 }
 
 export default ILogin;

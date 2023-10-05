@@ -1,11 +1,13 @@
-import Block from '../../../../core/Block';
+import Block from '../../../../core/Block/Block';
 import template from './template';
+import connect from '../../../../core/Store/connect';
 
 import type IChatsSpace from './types/types';
+import type { IStore } from '../../../../core/Store/types/types';
 
 import './style.scss';
 
-export default class ChatsSpace extends Block<IChatsSpace.Props, IChatsSpace.Refs> {
+class ChatsSpace extends Block<IChatsSpace.Props, IChatsSpace.Refs> {
   get message() {
     return this.refs.chat.message;
   }
@@ -18,3 +20,10 @@ export default class ChatsSpace extends Block<IChatsSpace.Props, IChatsSpace.Ref
     return template;
   }
 }
+
+const mapStateToProps = (state: IStore) => ({
+  openChatId: state.chat?.id,
+  chat: state.chat,
+});
+
+export default connect(ChatsSpace, mapStateToProps);
