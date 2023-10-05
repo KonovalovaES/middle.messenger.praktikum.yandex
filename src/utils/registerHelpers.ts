@@ -18,6 +18,7 @@ import {
   getIcon,
   getMessageClass,
   createHref,
+  createBaseHref,
   and,
   or,
   getFunction,
@@ -49,6 +50,7 @@ const registerHelpers = () => {
   Handlebars.registerHelper(HELPERS.and, and);
   Handlebars.registerHelper(HELPERS.or, or);
   Handlebars.registerHelper(HELPERS.createHref, createHref);
+  Handlebars.registerHelper(HELPERS.createBaseHref, createBaseHref);
   Handlebars.registerHelper(HELPERS.getFunction, getFunction);
   Handlebars.registerHelper(HELPERS.getName, getName);
   Handlebars.registerHelper(HELPERS.getNameById, getNameById);

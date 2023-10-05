@@ -9,7 +9,7 @@ export default `
     {{/if}}
       <img
         class='previewImage {{ imgClass }}'
-        src='{{# if img }}{{ createHref img }}{{ else }}/static/images/user.png{{/if}}'
+        src='{{# if img }}{{ createHref img }}{{ else }}{{ createBaseHref 'user.png' }}{{/if}}'
         alt='Загруженное фото'
       />
   </div>

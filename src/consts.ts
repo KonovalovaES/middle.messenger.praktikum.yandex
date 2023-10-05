@@ -18,6 +18,7 @@ export enum HELPERS {
   and = 'and',
   or = 'or',
   createHref = 'createHref',
+  createBaseHref = 'createBaseHref',
   getFunction = 'getFunction',
   getName = 'getName',
   getNameById = 'getNameById',
