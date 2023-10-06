@@ -1,4 +1,4 @@
-import type Block from '../../../../core/Block';
+import type Block from '../../../../core/Block/Block';
 import type Input from '../../../input';
 import type ErrorMessage from '../../../ErrorMessage/ErrorMessage';
 

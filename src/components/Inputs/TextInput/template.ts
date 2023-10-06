@@ -3,9 +3,9 @@ export default `
   <input
     class='input {{ className }}'
     name={{ name }}
-    placeholder='{{ placeholder }}'
-    value='{{ value }}'
-    type='{{ type }}'
+    placeholder={{ placeholder }} 
     ref={{ ref }}
+    type='{{ type }}'
+    value={{ value }}
   >
 `;

@@ -1,7 +1,6 @@
-@import '../../../../consts.scss';
-
 .footer_chat {
   @include display-flex(space-between);
+
   padding: $main-padding;
   position: sticky;
   bottom: 0;
@@ -10,6 +9,7 @@
 
 .chat-space__file {
   @include display-flex();
+
   justify-self: flex-end;
   align-self: center;
   cursor: pointer;

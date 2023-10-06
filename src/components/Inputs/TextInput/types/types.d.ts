@@ -1,6 +1,6 @@
 namespace ITextInput {
   interface Events {
-    blur?: (() => void);
+    blur?: () => void;
   }
 
   type Props = {
@@ -10,6 +10,7 @@ namespace ITextInput {
     value: string;
     type: string;
     onBlur?: () => void;
+    onChange?: () => void;
     events: Events;
   }
 }

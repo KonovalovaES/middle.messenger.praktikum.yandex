@@ -10,4 +10,11 @@ export default defineConfig({
     minify: true,
   },
   assetsInclude: '**/*.hbs',
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "./src/consts.scss";',
+      },
+    },
+  },
 });

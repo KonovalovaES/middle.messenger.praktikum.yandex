@@ -1,11 +1,10 @@
-@import '../../../../consts.scss';
-
 .chat-space__avatar {
   @include display-flex();
 }
 
 .chat-space__menu {
   @include display-flex();
+
   justify-self: flex-end;
   align-self: center;
   cursor: pointer;
@@ -18,6 +17,7 @@
 
 .chat-space__divider {
   @include main-horizontal-margin();
+
   width: calc(100% - 2 * $main-margin);
   height: $border-height;
   background-color: $main-background-color;
@@ -25,6 +25,7 @@
 
 .chat-wrapper {
   @include display-flex(normal, column, stretch);
+
   height: 100vh;
   width: 100%;
   font-family: $main-font;
@@ -32,6 +33,7 @@
 
 .chat-space__button {
   @include display-flex();
+
   margin: 0 $small-margin;
   width: 2rem;
   height: 2rem;

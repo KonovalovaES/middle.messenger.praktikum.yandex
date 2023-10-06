@@ -3,7 +3,8 @@ namespace IChatsHeader {
     avatar: string;
     title: string;
     members: number;
-    showMembers: boolean;
+    isMembersOpen: boolean;
+    openChatMenu: () => void;
   }
 }
 

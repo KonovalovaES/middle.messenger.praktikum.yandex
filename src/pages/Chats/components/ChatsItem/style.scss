@@ -1,9 +1,12 @@
-@import '../../../../consts.scss';
-
 .chat-item {
   @include display-flex(normal, row, stretch);
+
   height: $item-height;
   cursor: pointer;
+}
+
+.chat-item:hover {
+  background-color: #0001;
 }
 
 .chat-item_active {

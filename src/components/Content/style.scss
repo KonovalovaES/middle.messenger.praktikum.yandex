@@ -1,7 +1,6 @@
-@import '../../consts.scss';
-
 .content {
   @include display-flex(normal, column, stretch);
+
   width: $message-width;
 }
 
@@ -17,6 +16,7 @@
 .content__text {
   @include text();
   @include main-horizontal-margin();
+
   overflow: hidden;
   height: $item-text-height;
   line-height: 1.75;

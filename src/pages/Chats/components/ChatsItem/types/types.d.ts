@@ -1,15 +1,14 @@
+import type { IChatInfo } from '../../../../../core/Store/types/types';
+
 namespace IChatsItem {
   type Props = {
     id: number;
-    open_chat_id: number;
     avatar: string;
     user_avatar: string;
-    search: string;
     title: string;
-    email: string;
-    from: string;
-    time: number;
-    unread_count: number;
+    login: string;
+    content: string;
+    time: string;
   }
 }
 

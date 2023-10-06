@@ -7,7 +7,8 @@ export default `
       {{# if user_avatar }}
         <img src='{{ createHref user_avatar }}' alt='Аватар' class='avatar {{ avatarClass }}'/>
       {{ else }}
-        <img src={{ createHref 'user.png' }} alt='Без аватара' class='no-avatar {{ avatarClass }}'/>
+        <img src={{ createBaseHref 'user.png' }}
+          alt='Без аватара' class='no-avatar {{ avatarClass }}'/>
       {{/ if }}
     {{/ if }}
   </div>

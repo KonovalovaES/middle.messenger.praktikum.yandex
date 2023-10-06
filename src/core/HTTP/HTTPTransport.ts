@@ -1,14 +1,20 @@
 import METHODS from './types/consts';
 import queryStringify from './helpers/helpers';
 
-import type { Options, RequestHandlerType } from './types/types';
+import type { RequestOptions, RequestHandlerType } from './types/types';
+import { handleError } from '../../controllers/helpers';
 
 export default class HTTPTransport {
+  private readonly _url: string;
+  constructor(url: string) {
+    this._url = `https://ya-praktikum.tech/api/v2/${url}`;
+  }
+
   get: RequestHandlerType = (url, options) => {
     const stringifyData = queryStringify(options.data);
 
     return this.request(
-      `${url}${stringifyData}`,
+      `${this._url}${url ? url : ''}${stringifyData || ''}`,
       {
         ...options,
         method: METHODS.GET,
@@ -18,7 +24,7 @@ export default class HTTPTransport {
   };
 
   put: RequestHandlerType = (url, options) => this.request(
-    url,
+    `${this._url}${url ? url : ''}`,
     {
       ...options,
       method: METHODS.PUT,
@@ -26,7 +32,7 @@ export default class HTTPTransport {
   );
 
   post: RequestHandlerType = (url, options) => this.request(
-    url,
+    `${this._url}${url ? url : ''}`,
     {
       ...options,
       method: METHODS.POST,
@@ -34,34 +40,52 @@ export default class HTTPTransport {
   );
 
   delete: RequestHandlerType = (url, options) => this.request(
-    url,
+    `${this._url}${url ? url : ''}`,
     {
       ...options,
       method: METHODS.DELETE,
     },
   );
 
-  request(url: string, options: Options, timeout = 5000) {
-    const { method, data, headers } = options;
+  request<Request, Response>(
+    url: string,
+    options: RequestOptions<Request>,
+    timeout = 10000,
+  ): Promise<Response> {
+    const { method, data, headers: _headers } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
 
       xhr.open(method, url);
 
       xhr.timeout = timeout;
 
-      if (headers && Object.keys(headers).length > 0) {
-        Object.keys(headers).forEach((header) => xhr.setRequestHeader(header, headers[header]));
-      }
+      xhr.onload = () => {
+        try {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(xhr.response.includes('"') ? JSON.parse(xhr.response) : xhr.response);
+          }
 
-      xhr.onload = () => resolve(xhr);
+          reject(xhr.response.includes('"') ? JSON.parse(xhr.response) : xhr.response);
+        } catch (error) {
+          handleError(error);
+        }
+      };
 
       xhr.onabort = () => reject(new Error('Запрос был отменен'));
       xhr.onerror = () => reject(new Error('Произошла ошибка во время запроса'));
       xhr.ontimeout = () => reject(new Error('Превышено время ожидания запроса'));
 
-      xhr.send(method === METHODS.GET || !data ? void 0 : JSON.stringify(data));
+      if (data instanceof FormData) {
+        xhr.send(data);
+      } else {
+        const headers: Record<string, string> = { 'content-type': 'application/json', ..._headers };
+
+        Object.keys(headers).forEach((header) => xhr.setRequestHeader(header, headers[header]));
+        xhr.send(method === METHODS.GET || !data ? void 0 : JSON.stringify(data));
+      }
     });
   }
 }

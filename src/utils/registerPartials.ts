@@ -13,6 +13,9 @@ import lock from '../components/icons/Lock/template';
 import exit from '../components/icons/Exit/template';
 import hand from '../components/icons/Hand/template';
 import otter from '../components/icons/Otter/template';
+import photo from '../components/icons/Photo/template';
+import trash from '../components/icons/Trash/template';
+import add from '../components/icons/Add/template';
 
 export const registerPartials = () => {
   Handlebars.registerPartial('AngleRightIcon', angleRight);
@@ -28,6 +31,9 @@ export const registerPartials = () => {
   Handlebars.registerPartial('ExitIcon', exit);
   Handlebars.registerPartial('HandIcon', hand);
   Handlebars.registerPartial('OtterIcon', otter);
+  Handlebars.registerPartial('PhotoIcon', photo);
+  Handlebars.registerPartial('TrashIcon', trash);
+  Handlebars.registerPartial('AddIcon', add);
 };
 
 export default registerPartials;

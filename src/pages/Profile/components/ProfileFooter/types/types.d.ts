@@ -1,7 +1,7 @@
 namespace IProfileFooter {
   type Props = {
-    editProfile: boolean;
-    editPassword: boolean;
+    isEditProfileOpen?: boolean;
+    isEditPasswordOpen?: boolean;
   }
 }
 

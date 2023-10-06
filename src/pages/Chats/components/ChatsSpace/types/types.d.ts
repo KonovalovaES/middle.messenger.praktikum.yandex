@@ -4,10 +4,7 @@ import ChatsModal from '../../ChatsModal';
 
 namespace IChatsSpace {
   type Props = {
-    isAnyChatOpen: boolean;
-    open_chat_id: number;
-    users: UserChat[];
-    chat: Chat;
+    openChatId: number;
   }
 
   type Refs = {

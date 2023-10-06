@@ -1,25 +1,18 @@
 // language=hbs
+
 export default `
-  <li class='chat-item{{# if (isChatActive id open_chat_id) }} chat-item_active{{/ if }}'>
+  <li class='chat-item{{# if (isChatActive id openChatId) }} chat-item_active{{/ if }}'>
     <div class='chat-item__divider'/> 
     <div class='chat-item__body'>
-      {{{ Avatar
-        avatar=avatar
-        user_avatar=user_avatar
-      }}}
+      {{{ Avatar avatar=avatar user_avatar=user.avatar }}}
       {{{ Content
-        search=search
+        id=id
         title=title
         login=login
-        from=from
         content=content
       }}}
-      {{{ Info
-        search=search
-        time=time
-        unread_count=unread_count
-      }}}
+      {{{ Info time=time id=id }}}
     </div>
-    <div class='chat-item__divider'/>
+    <div class='chat-item__divider'>
   </li>
 `;

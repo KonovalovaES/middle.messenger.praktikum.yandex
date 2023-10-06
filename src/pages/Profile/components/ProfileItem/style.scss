@@ -1,5 +1,3 @@
-@import '../../../../consts.scss';
-
 .item {
   @include text();
   @include small-vertical-margin();
@@ -11,6 +9,7 @@
 
 .item__label {
   @include text($dark-text-color, bold);
+
   cursor: default;
 }
 

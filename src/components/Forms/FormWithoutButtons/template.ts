@@ -8,6 +8,7 @@ export default `
       name=name
       type='text'
       ref=refInput
+      onChange=onChange
     }}}
   </form>
 `;

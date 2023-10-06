@@ -1,5 +1,8 @@
-import registerComponent from '../core/registerComponent';
+import registerComponent from './registerComponent';
 
+import MenuItem from '../components/MenuItem';
+import PasswordItems from '../pages/Profile/components/ProfileItem/PasswordItems';
+import Loader from '../components/Loader';
 import IconButton from '../components/Buttons/IconButton';
 import FormInput from '../components/Inputs/FormInput';
 import Form from '../components/Forms/Form';
@@ -31,6 +34,12 @@ import Button from '../components/Buttons/Button';
 import Input from '../components/input';
 import Chat from '../pages/Chats/components/Chat';
 import FormWithoutButtons from '../components/Forms/FormWithoutButtons';
+import ChatInfo from '../pages/Chats/components/ChatInfo';
+import MembersAddItem from '../components/MembersAddItem';
+import MembersRemoveItem from '../components/MembersRemoveItem';
+import UploadButton from '../components/ImagePreview/components/UploadButton';
+import RemoveButton from '../components/ImagePreview/components/RemoveButton';
+import FilesInput from '../components/Inputs/ImageInput/components/FilesInput/FilesInput';
 
 import AddIcon from '../components/icons/Add';
 import EllipsisVerticalIcon from '../components/icons/EllipsisVertical';
@@ -51,6 +60,15 @@ import SearchIcon from '../components/icons/Search';
 import TrashIcon from '../components/icons/Trash';
 
 const registerComponents = () => {
+  registerComponent('FilesInput', FilesInput);
+  registerComponent('RemoveButton', RemoveButton);
+  registerComponent('UploadButton', UploadButton);
+  registerComponent('MembersRemoveItem', MembersRemoveItem);
+  registerComponent('MembersAddItem', MembersAddItem);
+  registerComponent('ChatInfo', ChatInfo);
+  registerComponent('MenuItem', MenuItem);
+  registerComponent('PasswordItems', PasswordItems);
+  registerComponent('Loader', Loader);
   registerComponent('FormWithoutButtons', FormWithoutButtons);
   registerComponent('Button', Button);
   registerComponent('IconButton', IconButton);

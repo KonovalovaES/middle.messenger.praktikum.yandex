@@ -3,7 +3,8 @@ export enum HELPERS {
   getChatTime = 'getChatTime',
   getMessageTime = 'getMessageTime',
   getDate = 'getDate',
-  isCurrentUser = 'isCurrentUser',
+  isCurrentUserById = 'isCurrentUserById',
+  isCurrentUserByLogin = 'isCurrentUserByLogin',
   isCountMembersShow = 'isCountMembersShow',
   getMembers = 'getMembers',
   isAnyChatOpen = 'isAnyChatOpen',
@@ -17,7 +18,23 @@ export enum HELPERS {
   and = 'and',
   or = 'or',
   createHref = 'createHref',
-  filterChats = 'filterChats',
+  createBaseHref = 'createBaseHref',
+  getFunction = 'getFunction',
+  getName = 'getName',
+  getNameById = 'getNameById',
+  getNameByLogin = 'getNameByLogin',
+  getNewMessagesCount = 'getNewMessagesCount',
+  sortChatsByTime = 'sortChatsByTime',
+  getUserAvatar = 'getUserAvatar'
+}
+
+export enum PAGES {
+  signin = '/',
+  signup = '/sign-up',
+  error = '/error',
+  messenger = '/messenger',
+  settings = '/settings',
+  error404 = '/404',
 }
 
 export const LATIN_ALPHABET = [

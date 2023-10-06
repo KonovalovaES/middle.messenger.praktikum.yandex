@@ -1,16 +1,7 @@
 // language=hbs
 export default `
   <div class='footer footer_chat' ref='ref'>
-    {{{ IconButton
-      class='chat-space__file'
-      icon='PaperclipIcon'
-      iconClass='icon_blue icon_large'
-    }}}
-    {{# if showFilesMenu }}
-      {{{ FilesMenu }}}
-    {{/ if }}
     {{{ FormWithoutButtons
-      search=search
       ref='messageForm'
       refInput='messageInput'
       onSubmit=onSend

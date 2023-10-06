@@ -1,14 +1,14 @@
-@import '../../../consts.scss';
-
 .form-field__label {
   @include text($middle-background-color);
   @include display-flex(space-between, column, stretch);
+
   margin: $small-margin $main-margin;
   font-size: medium;
 }
 
 .form-field__input {
   @include text($dark-text-color);
+
   border-bottom: $border $middle-background-color;
   border-top: none;
   border-left: none;

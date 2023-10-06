@@ -1,7 +1,6 @@
-@import '../../consts.scss';
-
 .info {
   @include display-flex(space-between, column, center);
+
   width: $item-info-width;
 }
 
@@ -14,6 +13,7 @@
 
 .info__new-messages {
   @include display-flex();
+
   height: $large-icon-size;
   width: $large-icon-size;
   border-radius: $circle-border-radius;

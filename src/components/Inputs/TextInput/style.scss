@@ -1,7 +1,6 @@
-@import '../../../consts.scss';
-
 .input {
   @include text();
+
   box-sizing: border-box;
   border-radius: $small-border-radius;
   line-height: 1;
@@ -24,10 +23,10 @@
   border: $border $middle-text-color;
 }
 
-.input_chat::-webkit-input-placeholder {
+.input_chat::input-placeholder {
   color: $middle-text-color;
 }
 
-.input_chat:-moz-placeholder {
+.input_chat:placeholder {
   color: $middle-text-color;
 }

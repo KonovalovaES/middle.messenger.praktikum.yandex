@@ -4,6 +4,8 @@ namespace IImageInput {
     withAddIcon: boolean;
     withRemoveIcon: boolean;
     errorText: string;
+    onUpload: () => void;
+    onRemove: () => void;
   }
 }
 

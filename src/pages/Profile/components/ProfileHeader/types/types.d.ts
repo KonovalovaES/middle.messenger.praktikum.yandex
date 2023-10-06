@@ -2,8 +2,9 @@ import type { User } from '../../../../../mock/types/types';
 
 namespace IProfileHeader {
   type Props = {
-    editProfile: boolean;
+    isEditProfileOpen?: boolean;
     user: User;
+    onAvatarChange?: (event: Event) => Promise<void>;
   }
 }
 
