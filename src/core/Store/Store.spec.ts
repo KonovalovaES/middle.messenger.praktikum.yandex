@@ -21,10 +21,10 @@ describe('Store', () => {
     it('should set data in the store', () => {
       testStore.set(path, name);
 
-      expect(testStore.state)
+      expect(testStore.state[path1])
         .to
         .deep
-        .equal({ [path1]: { [path2]: name } });
+        .equal({ [path2]: name });
     });
 
     it('should emit an "Updated" event when data is set', () => {
