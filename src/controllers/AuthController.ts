@@ -6,6 +6,10 @@ import { PAGES } from '../consts';
 import { customHasOwnProperty } from '../utils/helpers';
 import { handleError } from './helpers';
 
+interface CustomError {
+  reason: string;
+}
+
 class AuthController {
   async signup(data?: IAuthAPI.SignupRequest) {
     if (!data) {
@@ -37,10 +41,11 @@ class AuthController {
 
       router.go(PAGES.messenger);
     } catch (error) {
-      if (typeof error === 'object' && customHasOwnProperty(error, 'reason')) {
-        alert(error.reason);
+      if (typeof error === 'object' && error !== null && customHasOwnProperty(error, 'reason')) {
+        const errorWithReason = error as CustomError;
+        alert(errorWithReason.reason);
 
-        if (error.reason === 'User already in system') {
+        if (errorWithReason.reason === 'User already in system') {
           await this.getUser();
           router.go(PAGES.messenger);
         }

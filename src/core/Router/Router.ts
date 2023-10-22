@@ -55,14 +55,6 @@ class Router {
     this._onRoute(pathname);
   }
 
-  back() {
-    this.history.back();
-  }
-
-  forward() {
-    this.history.forward();
-  }
-
   getRoute(pathname: string) {
     const route =  this.routes.find((route) => route.match(pathname));
 

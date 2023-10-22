@@ -82,7 +82,7 @@ abstract class Block <Props extends BaseProps = BaseProps, Refs extends RefsType
     this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
   }
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this._checkInDom();
     this.componentDidMount();
   }
@@ -161,7 +161,7 @@ abstract class Block <Props extends BaseProps = BaseProps, Refs extends RefsType
     return this.element;
   }
 
-  _makePropsProxy(props: PropsWithEvents<Props>, self: Block) {
+  private _makePropsProxy(props: PropsWithEvents<Props>, self: Block) {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop.toString()];
