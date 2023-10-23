@@ -8,6 +8,12 @@ export default defineConfig({
     outDir: resolve(__dirname, 'build'),
     assetsDir: 'static/images',
     minify: true,
+    rollupOptions: {
+      // Включите обработку TypeScript
+      input: {
+        main: './src/index.ts', // Замените на ваш файл точки входа
+      },
+    },
   },
   assetsInclude: '**/*.hbs',
   css: {

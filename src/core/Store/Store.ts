@@ -2,10 +2,11 @@ import EventBus from '../EventBus/EventBus';
 import StoreEvents from './types/consts';
 import set from './helpers/helpers';
 
-import type { IStore } from './types/types';
 import authController from '../../controllers/AuthController';
 
-class Store extends EventBus {
+import type { IStore } from './types/types';
+
+export class Store extends EventBus {
   private _state: IStore = {} as IStore;
 
   get state() {

@@ -9,6 +9,10 @@
       "scriptHost"
     ],
     "allowJs": true,
+    "baseUrl": "./src",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -19,7 +23,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "downlevelIteration": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
@@ -27,7 +31,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "build",
-    "types": []
+    "types": ["ws"]
   },
   "exclude": [
     "node_modules",
@@ -37,5 +41,7 @@
   ],
   "include": [
     "src",
+    "src/handlebars.d.ts"
   ],
+
 }

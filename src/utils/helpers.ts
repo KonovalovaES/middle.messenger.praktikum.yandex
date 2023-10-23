@@ -131,7 +131,9 @@ export const getMessageClass = (outgoing: boolean) => (outgoing ? 'outgoing' : '
 
 export const createHref = (src: string) => `https://ya-praktikum.tech/api/v2/resources${src}`;
 
-export const createBaseHref = (src: string) => new URL(`/static/images/${src}`, import.meta.url);
+export const createBaseHref = (src: string) => (
+  new URL(`/static/images/${src}`, (import.meta as { url: string }).url)
+);
 
 export const and = (item1: unknown, item2: unknown) => !!(item1 && item2);
 
